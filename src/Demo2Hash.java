@@ -1,42 +1,50 @@
-import javax.print.DocFlavor;
-
-class Hashtable
+class HashTable
 {
-    private  int size=7;
-    private Node []hashData;
-    class Node
-    {
+    private int size=7;
+    private Node[]dataMap;
+    class Node{
         int value;
-        String key;
+        String  key;
         Node next;
-        Node(String key,int value)
+        Node(int value ,String key)
         {
             this.key=key;
             this.value=value;
         }
     }
-    public Hashtable()
+    public HashTable()
     {
-        hashData=new Node[size];
+        dataMap=new Node[size];
     }
     public void printHash()
     {
-        for (int i=0;i<hashData.length;i++)
+        for (int i=0;i<dataMap.length;i++)
         {
             System.out.println(i+": ");
-            Node temp=hashData[i];
+            Node temp=dataMap[i];
             while (temp!=null)
             {
-                System.out.println(" {"+temp.key+"= "+temp.value+" }");
+                System.out.println("{"+temp.key+"="+temp.value+"}");
                 temp=temp.next;
             }
         }
+    }
+    private int hash(String key)
+    {
+        int hash=0;
+        char []keyChars=key.toCharArray();
+        for (int i=0;i<keyChars.length;i++)
+        {
+           int acsciiValue=keyChars[i];
+           hash=(hash+acsciiValue*23)%dataMap.length;
+        }
+        return hash;
     }
 }
 public class Demo2Hash
 {
     public static void main(String[] args) {
-Hashtable hashtable=new Hashtable();
-hashtable.printHash();
+HashTable hashTable=new HashTable();
+hashTable.printHash();
     }
 }
