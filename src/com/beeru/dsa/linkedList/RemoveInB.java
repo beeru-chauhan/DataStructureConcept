@@ -1,3 +1,5 @@
+package com.beeru.dsa.linkedList;
+
 class LinkedList8
 {
     Node head;

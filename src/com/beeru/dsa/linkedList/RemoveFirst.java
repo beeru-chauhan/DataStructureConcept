@@ -1,4 +1,4 @@
-import javax.print.attribute.standard.NumberOfInterveningJobs;
+package com.beeru.dsa.linkedList;
 
 class LinkedList4
 {
